@@ -53,15 +53,11 @@ class GuidcheckPlugin(b3.plugin.Plugin):
         # Define the proper regexp for our game version
         self._guidregexp = self.defineRegexp()
 
-        if self.console.PunkBuster:
-            self.disable()
-            self.debug('PunkBuster is enabled, plugin disabled.')
+        if self._strictlength:
+            self.debug('Using strict length guid checking')
         else:
-            if self._strictlength:
-                self.debug('Using strict length guid checking')
-            else:
-                self.debug('Using not so strict length guid checking')
-            self.debug('Started')
+            self.debug('Using not so strict length guid checking')
+        self.debug('Started')
 
     def onLoadConfig(self):
         pass
